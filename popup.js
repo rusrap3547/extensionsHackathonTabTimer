@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	const closeTimeInput = document.getElementById("close-time");
 	const saveButton = document.getElementById("save-btn");
 	const data = chrome.storage.sync.get("options");
-  console.log(data);
+	console.log(data);
 
-	Object.assign(options, data.options);
-	optionsForm.debug.checked = Boolean(options.debug);
+	// Object.assign(options, data.options);
+	// optionsForm.debug.checked = Boolean(options.debug);
 
 	// if checked/ on - should keep timer of taqbs
 	chrome.storage.sync.get(["autoCloseEnabled", "autoCloseTime"], (data) => {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		closeTimeInput.value = data.autoCloseTime || 60;
 	});
 
-	// small form for timer, listener for 
+	// small form for timer, listener for
 	saveButton.addEventListener("click", () => {
 		const autoCloseEnabled = autoCloseToggle.checked;
 		const autoCloseTime = parseInt(closeTimeInput.value, 10);
@@ -30,3 +30,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		);
 	});
 });
+
